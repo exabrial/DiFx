@@ -1,16 +1,16 @@
 package com.github.exabrial.difx.cdi;
 
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.spi.BeanManager;
+import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
+import jakarta.enterprise.inject.spi.Extension;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.exabrial.difx.fxml.DiFxViewLoader;
 import com.github.exabrial.difx.fxml.FxmlLoaderProducer;
 import com.github.exabrial.difx.ui.FxUiExecutor;
-
-import jakarta.enterprise.event.Observes;
-import jakarta.enterprise.inject.spi.BeanManager;
-import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
-import jakarta.enterprise.inject.spi.Extension;
 
 /**
  * Portable CDI extension that registers DiFx's own beans with the container: the {@link FxUiExecutor}, the {@link FxmlLoaderProducer},

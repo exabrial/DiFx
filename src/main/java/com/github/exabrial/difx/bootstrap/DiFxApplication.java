@@ -1,10 +1,5 @@
 package com.github.exabrial.difx.bootstrap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.github.exabrial.difx.bootstrap.cdi.qualifier.StartupStage;
-
 import jakarta.enterprise.context.spi.CreationalContext;
 import jakarta.enterprise.event.Event;
 import jakarta.enterprise.inject.spi.AnnotatedType;
@@ -12,6 +7,12 @@ import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.enterprise.inject.spi.InjectionTarget;
 import jakarta.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.github.exabrial.difx.bootstrap.cdi.qualifier.StartupStage;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 

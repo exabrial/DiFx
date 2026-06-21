@@ -1,9 +1,10 @@
 package com.github.exabrial.difx.fxml;
 
+import jakarta.enterprise.context.spi.CreationalContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jakarta.enterprise.context.spi.CreationalContext;
 import javafx.scene.Parent;
 
 /**

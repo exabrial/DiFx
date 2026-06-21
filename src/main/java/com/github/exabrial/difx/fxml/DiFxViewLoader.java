@@ -3,14 +3,15 @@ package com.github.exabrial.difx.fxml;
 import java.io.IOException;
 import java.net.URL;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.exabrial.difx.fxml.model.annotation.FxmlView;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Instance;
-import jakarta.inject.Inject;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 

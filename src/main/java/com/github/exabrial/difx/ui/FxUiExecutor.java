@@ -1,6 +1,7 @@
 package com.github.exabrial.difx.ui;
 
 import jakarta.enterprise.context.ApplicationScoped;
+
 import javafx.application.Platform;
 
 /**

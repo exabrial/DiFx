@@ -1,12 +1,13 @@
 package com.github.exabrial.difx.demo;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
+
 import com.github.exabrial.difx.bootstrap.cdi.qualifier.StartupStage;
 import com.github.exabrial.difx.fxml.DiFxViewLoader;
 import com.github.exabrial.difx.fxml.FxControllerAndView;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

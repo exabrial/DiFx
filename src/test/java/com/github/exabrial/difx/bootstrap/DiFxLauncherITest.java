@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
+
 import org.junit.jupiter.api.Test;
 
 import com.github.exabrial.difx.demo.Ping;
@@ -11,8 +14,6 @@ import com.github.exabrial.difx.demo.PingViewModel;
 import com.github.exabrial.difx.fxml.DiFxViewLoader;
 import com.github.exabrial.difx.ui.UiExecutor;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
 import javafx.application.Application;
 
 class DiFxLauncherITest {

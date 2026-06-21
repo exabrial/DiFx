@@ -1,12 +1,13 @@
 package com.github.exabrial.difx.bootstrap;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.exabrial.difx.bootstrap.cdi.qualifier.StartupStage;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
 import javafx.application.Application;
 
 /**
