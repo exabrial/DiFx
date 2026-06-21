@@ -70,6 +70,7 @@ public class MainJavaFxApplication extends DiFxApplication {
 	@Inject
 	private SomeService service;
 
+	// Catching this callback is optional of course
 	@Override
 	protected void afterInjection() throws Exception {
 		service.doSomePreWork();
