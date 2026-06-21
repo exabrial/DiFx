@@ -159,7 +159,7 @@ public class SomePresenter {
 One weird quirk is that if you use `@FXML` "injections", the JavaFx framework sets the fields via property reflection. Since CDI Proxies for something like an `@ApplicationScoped` bean don't pass field mutations through to proxy targets, you have two choices:
 
 1. Annotate setters with `@FXML` which does work and will proxy through.
-2. Keep field injections, but using `@DependentScoped` beans. This works because they are proxied. Honestly this is a pretty natural feeling lifecycle for Desktop Applications anyway.
+2. Keep field injections, but using `@DependentScoped` beans. This works because `@DependentScoped` are proxies; its the real thing. Honestly this is a pretty natural feeling lifecycle for Desktop Applications anyway.
 
 So in light of #2: `FxControllerAndView` is `AutoCloseable`. Closing it releases the `CreationalContext`, destroying dependent beans and firing `@PreDestroy`. Use this for dialogs and other short-lived views:
 
