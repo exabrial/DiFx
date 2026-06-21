@@ -1,6 +1,8 @@
 # DiFx
 
-CDI dependency injection for JavaFX. The missing piece to make Desktop Development Awesome!
+⭐ Before you leave, ⭐ Leave a star! ⭐ Thanks! :) ⭐
+
+DiFx enables CDI dependency injection for JavaFX. It's the missing piece to make Desktop Development Awesome!
 
 DiFx wires a Jakarta CDI SE container into JavaFX's lifecycle so your controllers, presenters, and services are proper managed beans. `@Inject`, custom scopes, Sync/Async events, interceptors, all of it should work. It's a portable CDI extension, so it works with OpenWebBeans and (in theory, haven't tested) Weld, or any other spec-compliant container.
 
