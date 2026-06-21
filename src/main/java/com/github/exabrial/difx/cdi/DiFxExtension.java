@@ -13,11 +13,9 @@ import com.github.exabrial.difx.fxml.FxmlLoaderProducer;
 import com.github.exabrial.difx.ui.FxUiExecutor;
 
 /**
- * Portable CDI extension that registers DiFx's own beans with the container: the {@link FxUiExecutor}, the {@link FxmlLoaderProducer},
- * and the {@link DiFxViewLoader}. Registration goes exclusively through this extension, which the container discovers via
- * {@code META-INF/services}, so a consuming application gets DiFx's beans without scanning or listing any DiFx package -- and it works
- * even when the application disables bean discovery. DiFx's own jar is marked {@code bean-discovery-mode="none"} so these types are
- * registered exactly once, here, rather than also being picked up by classpath scanning.
+ * Portable CDI extension that registers DiFx's beans: {@link FxUiExecutor}, {@link FxmlLoaderProducer}, and {@link DiFxViewLoader}.
+ * Discovered via {@code META-INF/services}. DiFx's jar uses {@code bean-discovery-mode="none"}, so these types are registered here
+ * rather than by classpath scanning.
  */
 public class DiFxExtension implements Extension {
 	private static final Logger log = LoggerFactory.getLogger(DiFxExtension.class);

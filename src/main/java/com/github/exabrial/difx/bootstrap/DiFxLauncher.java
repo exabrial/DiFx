@@ -11,10 +11,9 @@ import com.github.exabrial.difx.bootstrap.cdi.qualifier.StartupStage;
 import javafx.application.Application;
 
 /**
- * Entry point a DiFx application extends. Calling {@link #launch(String...)} bootstraps a CDI SE container, applies any customization
- * via {@link #configureContainer(SeContainerInitializer)}, then hands control to JavaFX by launching the {@link #applicationClass()}.
- * The container is owned for the entire JavaFX lifecycle and closed when the application exits. This class is instantiated with
- * {@code new}, before any container exists, so it is deliberately not a CDI bean.
+ * Entry point for a DiFx application. Bootstraps a CDI SE container, applies customization via
+ * {@link #configureContainer(SeContainerInitializer)}, then launches the {@link #getApplicationClass()}. The container stays open for
+ * the JavaFX lifecycle and closes on exit.
  */
 public abstract class DiFxLauncher {
 	private static final Logger log = LoggerFactory.getLogger(DiFxLauncher.class);

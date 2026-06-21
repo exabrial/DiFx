@@ -17,16 +17,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.util.Callback;
 
 /**
- * Produces {@link DiFxFxmlLoader} instances whose controller factory resolves {@code fx:controller} classes (and nested
- * {@code fx:include} controllers) from the CDI container. This is the single JavaFX extension point for dependency injection: every
- * FXML-declared controller becomes a managed, injected bean. The holder is {@code @Dependent} and single-use, so inject
- * {@code Instance<DiFxFxmlLoader>} and obtain a fresh one per FXML file.
- *
- * <p>
- * Every controller for one load is resolved against a single {@link CreationalContext} carried on the holder. The view loader captures
- * that context and bundles it into the {@code FxControllerAndView} so the dependent controllers can be destroyed together later.
- * Disposing the holder destroys only the {@link FXMLLoader}; the controller context is left alive deliberately, since the controllers
- * must outlive the loader that built them.
+ * Produces {@link DiFxFxmlLoader} instances whose controller factory resolves {@code fx:controller} classes from the CDI container.
+ * The holder is {@code @Dependent} and single-use; inject {@code Instance<DiFxFxmlLoader>} and obtain a fresh one per FXML load.
  */
 @Dependent
 public class FxmlLoaderProducer {
