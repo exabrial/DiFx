@@ -210,7 +210,7 @@ Leverage CDI's event bus to distribute events around your application!
 
 #### Under the hood
 
-DiFx registers itself via `META-INF/services/jakarta.enterprise.inject.spi.Extension`. The `DiFxExtension` adds its beans during `BeforeBeanDiscovery`, so they're available regardless of the application's discovery mode. DiFx's own jar uses `bean-discovery-mode="none"` so these types are registered exactly once through the extension, not picked up again by classpath scanning.
+DiFx registers itself via `META-INF/services/jakarta.enterprise.inject.spi.Extension`. The `DiFxExtension` adds its beans during `BeforeBeanDiscovery`, so they're available regardless of the application's discovery mode.
 
 `FxmlLoaderProducer` is a `@Dependent` CDI producer that creates single-use `DiFxFxmlLoader` instances, each wrapping a `FXMLLoader` with a controller factory backed by `BeanManager.getReference()`. All controllers resolved during a single FXML load share one `CreationalContext`, so they can be destroyed together when the view is torn down.
 
