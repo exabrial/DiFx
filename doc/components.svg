@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" font-family="ui-monospace, &#39;Cascadia Code&#39;, &#39;Source Code Pro&#39;, Menlo, Consolas, monospace" font-size="13">
+  <defs>
+    
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#888" stroke-width="1.2"></path>
+    </marker>
+  </defs>
+
+  
+  <rect width="820" height="420" fill="#fafafa" rx="6"></rect>
+
+  
+  <text x="24" y="32" font-size="16" font-weight="700" fill="#111">DiFx Components</text>
+
+  
+  <rect x="20" y="52" width="250" height="200" fill="#f0f4ff" stroke="#b0c4e8" class="box"></rect>
+  <text x="32" y="72" class="label" fill="#3b6cb5">Bootstrap</text>
+
+  <rect x="36" y="84" width="218" height="44" fill="#fff" stroke="#b0c4e8" class="box"></rect>
+  <text x="48" y="104" class="name" fill="#222">DiFxLauncher</text>
+  <text x="48" y="119" class="desc">Boots CDI, then starts JavaFX</text>
+
+  <rect x="36" y="140" width="218" height="44" fill="#fff" stroke="#b0c4e8" class="box"></rect>
+  <text x="48" y="160" class="name" fill="#222">DiFxApplication</text>
+  <text x="48" y="175" class="desc">Self-injecting Application base</text>
+
+  <rect x="36" y="196" width="218" height="44" fill="#fff" stroke="#b0c4e8" class="box"></rect>
+  <text x="48" y="216" class="name" fill="#222">@StartupStage</text>
+  <text x="48" y="231" class="desc">CDI event for primary Stage</text>
+
+  
+  <rect x="290" y="52" width="250" height="256" fill="#f0f9f0" stroke="#a3d4a3" class="box"></rect>
+  <text x="302" y="72" class="label" fill="#3a7d3a">FXML Integration</text>
+
+  <rect x="306" y="84" width="218" height="44" fill="#fff" stroke="#a3d4a3" class="box"></rect>
+  <text x="318" y="104" class="name" fill="#222">DiFxViewLoader</text>
+  <text x="318" y="119" class="desc">Loads FXML with CDI controllers</text>
+
+  <rect x="306" y="140" width="218" height="44" fill="#fff" stroke="#a3d4a3" class="box"></rect>
+  <text x="318" y="160" class="name" fill="#222">FxmlLoaderProducer</text>
+  <text x="318" y="175" class="desc">CDI producer for FXMLLoader</text>
+
+  <rect x="306" y="196" width="218" height="44" fill="#fff" stroke="#a3d4a3" class="box"></rect>
+  <text x="318" y="216" class="name" fill="#222">FxControllerAndView</text>
+  <text x="318" y="231" class="desc">Controller + View + Context</text>
+
+  <rect x="306" y="252" width="218" height="44" fill="#fff" stroke="#a3d4a3" class="box"></rect>
+  <text x="318" y="272" class="name" fill="#222">@FxmlView</text>
+  <text x="318" y="287" class="desc">Custom FXML resource mapping</text>
+
+  
+  <rect x="560" y="52" width="240" height="144" fill="#fef8f0" stroke="#d4b896" class="box"></rect>
+  <text x="572" y="72" class="label" fill="#8a6530">Threading</text>
+
+  <rect x="576" y="84" width="208" height="44" fill="#fff" stroke="#d4b896" class="box"></rect>
+  <text x="588" y="104" class="name" fill="#222">UiExecutor</text>
+  <text x="588" y="119" class="desc">Executor for the FX thread</text>
+
+  <rect x="576" y="140" width="208" height="44" fill="#fff" stroke="#d4b896" class="box"></rect>
+  <text x="588" y="160" class="name" fill="#222">FxUiExecutor</text>
+  <text x="588" y="175" class="desc">Platform.runLater impl</text>
+
+  
+  <rect x="560" y="216" width="240" height="92" fill="#f5f0fa" stroke="#baa8d4" class="box"></rect>
+  <text x="572" y="236" class="label" fill="#6b4d8e">CDI Extension</text>
+
+  <rect x="576" y="248" width="208" height="48" fill="#fff" stroke="#baa8d4" class="box"></rect>
+  <text x="588" y="268" class="name" fill="#222">DiFxExtension</text>
+  <text x="588" y="283" class="desc">Registers beans via SPI</text>
+
+  
+  <path d="M145,252 L145,270 L145,270" class="arrow" stroke="#888"></path>
+
+  
+  <rect x="20" y="330" width="370" height="70" fill="#e8e8ec" stroke="#bbb" class="box" stroke-dasharray="4,3"></rect>
+  <text x="36" y="355" font-size="14" font-weight="600" fill="#444">JavaFX Runtime</text>
+  <text x="36" y="374" class="desc">Application, Stage, FXMLLoader, Platform</text>
+
+  <rect x="410" y="330" width="390" height="70" fill="#e8e8ec" stroke="#bbb" class="box" stroke-dasharray="4,3"></rect>
+  <text x="426" y="355" font-size="14" font-weight="600" fill="#444">Jakarta CDI SE Container</text>
+  <text x="426" y="374" class="desc">BeanManager, Events, Scopes, Extensions</text>
+
+  
+  <path d="M145,252 L145,326" class="arrow" stroke="#888"></path>
+  <path d="M415,308 L415,326" class="arrow" stroke="#888"></path>
+  <path d="M680,308 L680,326" class="arrow" stroke="#888"></path>
+</svg>

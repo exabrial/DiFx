@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" font-family="ui-monospace, &#39;Cascadia Code&#39;, &#39;Source Code Pro&#39;, Menlo, Consolas, monospace" font-size="13">
+  <defs>
+    
+    <marker id="ah" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#888" stroke-width="1"></path>
+    </marker>
+    <marker id="ah-green" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#6aaa6a" stroke-width="1"></path>
+    </marker>
+    <marker id="ah-purple" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#9a7ec0" stroke-width="1"></path>
+    </marker>
+    <marker id="ah-blue" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#7a9fd4" stroke-width="1"></path>
+    </marker>
+    <marker id="ah-amber" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#d4a84a" stroke-width="1"></path>
+    </marker>
+  </defs>
+
+  
+  <rect width="700" height="360" fill="#fafafa" rx="6"></rect>
+
+  
+  <text x="24" y="30" font-size="16" font-weight="700" fill="#111">Controller / Presenter / ViewModel</text>
+
+  
+
+  
+  <rect x="24" y="56" width="100" height="46" fill="#e8e8ec" stroke="#aaa" class="box"></rect>
+  <text x="44" y="76" class="name" fill="#444">User</text>
+  <text x="38" y="92" class="detail" fill="#666">clicks, types</text>
+
+  
+  <rect x="180" y="48" width="160" height="62" fill="#f0f4ff" stroke="#7a9fd4" class="box"></rect>
+  <rect x="192" y="55" width="78" height="16" fill="#7a9fd4" rx="3"></rect>
+  <text x="200" y="66" class="scope" fill="#fff">@Dependent</text>
+  <text x="192" y="86" class="name" fill="#222">Controller</text>
+  <text x="192" y="100" class="detail">FXML-bound, thin</text>
+
+  
+  <rect x="460" y="56" width="130" height="46" fill="#fff8ed" stroke="#d4a84a" class="box"></rect>
+  <text x="484" y="76" class="name" fill="#8a6520">CDI Event</text>
+  <text x="478" y="92" class="detail" fill="#8a6520">fire / fireAsync</text>
+
+  
+  <rect x="430" y="195" width="160" height="62" fill="#f0f9f0" stroke="#6aaa6a" class="box"></rect>
+  <rect x="442" y="202" width="120" height="16" fill="#6aaa6a" rx="3"></rect>
+  <text x="450" y="213" class="scope" fill="#fff">@ApplicationScoped</text>
+  <text x="442" y="233" class="name" fill="#222">Presenter</text>
+  <text x="442" y="249" class="detail">observes, does work</text>
+
+  
+  <rect x="180" y="195" width="160" height="62" fill="#f5f0fa" stroke="#9a7ec0" class="box"></rect>
+  <rect x="192" y="202" width="120" height="16" fill="#9a7ec0" rx="3"></rect>
+  <text x="200" y="213" class="scope" fill="#fff">@ApplicationScoped</text>
+  <text x="192" y="233" class="name" fill="#222">ViewModel</text>
+  <text x="192" y="249" class="detail">JavaFX Properties</text>
+
+  
+  <rect x="460" y="303" width="130" height="38" fill="#fef4ee" stroke="#d4a060" class="box"></rect>
+  <text x="486" y="327" class="name" fill="#8a6520">UiExecutor</text>
+
+  
+  <rect x="24" y="195" width="100" height="46" fill="#e8e8ec" stroke="#aaa" class="box"></rect>
+  <text x="44" y="215" class="name" fill="#444">FXML</text>
+  <text x="30" y="231" class="detail" fill="#666">widgets, layout</text>
+
+  
+
+  
+  <line x1="124" y1="79" x2="175" y2="79" stroke="#888" stroke-width="1.5" marker-end="url(#ah)"></line>
+  <text x="131" y="72" class="al">action</text>
+
+  
+  <line x1="340" y1="79" x2="455" y2="79" stroke="#d4a84a" stroke-width="1.5" marker-end="url(#ah-amber)"></line>
+  <text x="376" y="72" class="al" fill="#8a6520">fires</text>
+
+  
+  <line x1="525" y1="102" x2="525" y2="190" stroke="#6aaa6a" stroke-width="1.5" marker-end="url(#ah-green)"></line>
+  <text x="533" y="150" class="al" fill="#3a7a3a">@Observes</text>
+
+  
+  <line x1="430" y1="226" x2="345" y2="226" stroke="#9a7ec0" stroke-width="1.5" marker-end="url(#ah-purple)"></line>
+  <text x="362" y="219" class="al" fill="#6b4d8e">writes</text>
+
+  
+  <line x1="200" y1="195" x2="200" y2="115" stroke="#7a9fd4" stroke-width="1.5" marker-end="url(#ah-blue)"></line>
+  <text x="208" y="160" class="al" fill="#3b6cb5">binds</text>
+
+  
+  <line x1="260" y1="110" x2="74" y2="190" stroke="#888" stroke-width="1.5" marker-end="url(#ah)"></line>
+  <text x="132" y="148" class="al">updates</text>
+
+  
+  <line x1="525" y1="257" x2="525" y2="299" stroke="#d4a060" stroke-width="1.5" marker-end="url(#ah-amber)"></line>
+  <text x="533" y="282" class="al" fill="#8a6520">thread hop</text>
+
+  
+  <text x="24" y="296" font-size="11" fill="#888" font-weight="500">The controller and presenter never</text>
+  <text x="24" y="312" font-size="11" fill="#888" font-weight="500">reference each other directly.</text>
+  <text x="24" y="334" font-size="11" fill="#888" font-weight="500">Communication flows through CDI events</text>
+  <text x="24" y="350" font-size="11" fill="#888" font-weight="500">and shared view-model properties.</text>
+</svg>
