@@ -1,0 +1,38 @@
+# Java #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IDEA #
+*.iml
+.idea
+*~
+
+# eclipse specific git ignore
+.project
+.metadata
+.classpath
+.checkstyle
+.settings
+.factorypath
+
+# visual studio
+.vscode
+
+# Maven files #
+data/
+target
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Misc #
+*.log
+.DS_Store
+/bin/
