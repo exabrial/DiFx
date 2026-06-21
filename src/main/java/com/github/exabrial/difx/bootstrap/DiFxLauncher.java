@@ -20,7 +20,7 @@ public abstract class DiFxLauncher {
 	 * The JavaFX {@code Application} subclass to launch once the container is up. Return {@link DiFxApplication} (or a
 	 * subclass) so the {@link StartupStage} event is fired to your managed beans.
 	 */
-	protected abstract Class<? extends Application> applicationClass();
+	protected abstract Class<? extends Application> getApplicationClass();
 
 	/**
 	 * Hook to customize container startup before initialization: add or disable bean classes and packages, select
@@ -31,7 +31,7 @@ public abstract class DiFxLauncher {
 	}
 
 	public final void launch(final String... arguments) {
-		final Class<? extends Application> applicationClass = applicationClass();
+		final Class<? extends Application> applicationClass = getApplicationClass();
 		log.info("launch() bootstrapping CDI container for application:{}", applicationClass);
 		try (SeContainer container = bootstrap()) {
 			log.debug("launch() container initialized, handing off to JavaFX:{}", container);
