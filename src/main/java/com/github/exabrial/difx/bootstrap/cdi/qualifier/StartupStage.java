@@ -1,4 +1,4 @@
-package com.github.exabrial.difx.bootstrap;
+package com.github.exabrial.difx.bootstrap.cdi.qualifier;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,18 +10,15 @@ import jakarta.enterprise.util.AnnotationLiteral;
 import jakarta.inject.Qualifier;
 
 /**
- * Qualifies the CDI event carrying the JavaFX primary {@code Stage}, fired once the container is up and the FX
- * Application Thread is running. Observe it to build and show the first window:
- * {@code void onStartup(@Observes @StartupStage Stage primaryStage)}.
+ * Qualifies the CDI event carrying the JavaFX primary {@code Stage}, fired once the container is up and the FX Application Thread is
+ * running. Observe it to build and show the first window: {@code void onStartup(@Observes @StartupStage Stage primaryStage)}.
  */
 @Qualifier
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE })
 public @interface StartupStage {
-
-	/** Literal for firing the event programmatically through a {@code BeanManager}. */
-	AnnotationLiteral<StartupStage> LITERAL = new AnnotationLiteral<StartupStage>() {
+	AnnotationLiteral<StartupStage> LITERAL = new AnnotationLiteral<>() {
 		private static final long serialVersionUID = 1L;
 	};
 }

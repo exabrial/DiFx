@@ -44,7 +44,7 @@ public class PingPresenter {
 	static void sleepBriefly() {
 		try {
 			Thread.sleep(700);
-		} catch (final InterruptedException e) {
+		} catch (final InterruptedException interruptedException) {
 			Thread.currentThread().interrupt();
 		}
 	}

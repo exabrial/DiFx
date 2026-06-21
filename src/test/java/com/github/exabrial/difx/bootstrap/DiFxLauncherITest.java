@@ -20,7 +20,7 @@ class DiFxLauncherITest {
 	private DiFxLauncher newLauncher() {
 		return new DiFxLauncher() {
 			@Override
-			protected Class<? extends Application> applicationClass() {
+			protected Class<? extends Application> getApplicationClass() {
 				return DiFxApplication.class;
 			}
 		};

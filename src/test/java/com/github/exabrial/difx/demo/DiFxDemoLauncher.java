@@ -7,7 +7,7 @@ import javafx.application.Application;
 public class DiFxDemoLauncher extends DiFxLauncher {
 
 	@Override
-	protected Class<? extends Application> applicationClass() {
+	protected Class<? extends Application> getApplicationClass() {
 		return DemoApplication.class;
 	}
 

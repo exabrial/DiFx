@@ -6,6 +6,8 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.exabrial.difx.fxml.model.annotation.FxmlView;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
@@ -13,9 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 /**
- * Loads an FXML view by its controller class, with the controller (and any nested controllers) resolved from the CDI
- * container. The FXML resource is located by {@link FxmlView} or, by default, the controller's simple name plus
- * {@code .fxml} in the same package. Returns the managed controller and its root node together.
+ * Loads an FXML view by its controller class, with the controller (and any nested controllers) resolved from the CDI container. The
+ * FXML resource is located by {@link FxmlView} or, by default, the controller's simple name plus {@code .fxml} in the same package.
+ * Returns the managed controller and its root node together.
  */
 @ApplicationScoped
 public class DiFxViewLoader {
@@ -46,7 +48,17 @@ public class DiFxViewLoader {
 		return controllerAndView;
 	}
 
-	static String fxmlResourceName(final Class<?> controllerType) {
+	static final Parent load(final FXMLLoader loader, final URL location) {
+		final Parent view;
+		try {
+			view = loader.load();
+		} catch (final IOException ioException) {
+			throw new IllegalStateException("Failed to load FXML: " + location, ioException);
+		}
+		return view;
+	}
+
+	static final String fxmlResourceName(final Class<?> controllerType) {
 		final FxmlView fxmlView = controllerType.getAnnotation(FxmlView.class);
 		final String resourceName;
 		if (fxmlView != null && !fxmlView.value().isEmpty()) {
@@ -55,15 +67,5 @@ public class DiFxViewLoader {
 			resourceName = controllerType.getSimpleName() + ".fxml";
 		}
 		return resourceName;
-	}
-
-	static Parent load(final FXMLLoader loader, final URL location) {
-		final Parent view;
-		try {
-			view = loader.load();
-		} catch (final IOException e) {
-			throw new IllegalStateException("Failed to load FXML: " + location, e);
-		}
-		return view;
 	}
 }
