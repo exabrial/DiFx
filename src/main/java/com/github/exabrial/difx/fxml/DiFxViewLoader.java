@@ -5,28 +5,29 @@ import java.net.URL;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tomitribe.microscoped.core.ScopeContext;
 
 import com.github.exabrial.difx.fxml.model.annotation.FxmlView;
+import com.github.exabrial.difx.fxmlscoped.FxmlScoped;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-/**
- * Loads an FXML view by its controller class, with the controller (and any nested controllers) resolved from the CDI container. The
- * FXML resource is located by {@link FxmlView} or, by default, the controller's simple name plus {@code .fxml} in the same package.
- * Returns the managed controller and its root node together.
- */
 @ApplicationScoped
 public class DiFxViewLoader {
 	private static final Logger log = LoggerFactory.getLogger(DiFxViewLoader.class);
 
 	@Inject
 	private Instance<DiFxFxmlLoader> fxmlLoaders;
+	@Inject
+	private BeanManager beanManager;
 
+	@SuppressWarnings("unchecked")
 	public <C> FxControllerAndView<C> load(final Class<C> controllerType) {
 		final String resourceName = fxmlResourceName(controllerType);
 		final URL location = controllerType.getResource(resourceName);
@@ -42,7 +43,14 @@ public class DiFxViewLoader {
 			final Parent view = load(loader, location);
 			final C controller = controllerType.cast(loader.getController());
 			log.debug("load() loaded view for controller:{}", controllerType);
-			controllerAndView = new FxControllerAndView<>(controller, view, difxFxmlLoader.creationalContext());
+			ScopeContext<String> scopeContext = null;
+			try {
+				scopeContext = (ScopeContext<String>) beanManager.getContext(FxmlScoped.class);
+			} catch (final Exception ignored) {
+				// scope not active â controller is @Dependent, not @FxmlScoped
+			}
+			controllerAndView = new FxControllerAndView<>(controller, view, difxFxmlLoader.creationalContext(), difxFxmlLoader.viewKey(),
+					scopeContext);
 		} finally {
 			fxmlLoaders.destroy(difxFxmlLoader);
 		}
