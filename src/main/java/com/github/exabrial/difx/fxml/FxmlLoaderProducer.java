@@ -13,9 +13,6 @@ import jakarta.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tomitribe.microscoped.core.ScopeContext;
-
-import com.github.exabrial.difx.fxmlscoped.FxmlScoped;
 
 import javafx.fxml.FXMLLoader;
 import javafx.util.Callback;
@@ -45,7 +42,6 @@ public class FxmlLoaderProducer {
 		log.debug("disposeFxmlLoader() disposing loader, controller context left alive for caller");
 	}
 
-	@SuppressWarnings("unchecked")
 	static final Object resolveController(final BeanManager beanManager, final CreationalContext<?> controllerContext,
 			final Class<?> controllerType, final String viewKey) {
 		final Set<Bean<?>> beans = beanManager.getBeans(controllerType);
@@ -55,20 +51,8 @@ public class FxmlLoaderProducer {
 			throw new IllegalStateException("FXML controller is not a managed bean: " + controllerType.getName());
 		} else {
 			final Bean<?> bean = beanManager.resolve(beans);
-			final boolean fxmlScoped = controllerType.isAnnotationPresent(FxmlScoped.class);
-			if (fxmlScoped) {
-				final ScopeContext<String> scopeContext = (ScopeContext<String>) beanManager.getContext(FxmlScoped.class);
-				final String previousKey = scopeContext.enter(viewKey);
-				try {
-					controller = beanManager.getReference(bean, controllerType, controllerContext);
-					log.debug("resolveController() resolved @FxmlScoped controller:{} viewKey:{}", controllerType, viewKey);
-				} finally {
-					scopeContext.exit(previousKey);
-				}
-			} else {
-				controller = beanManager.getReference(bean, controllerType, controllerContext);
-				log.debug("resolveController() resolved managed controller:{}", controllerType);
-			}
+			controller = beanManager.getReference(bean, controllerType, controllerContext);
+			log.debug("resolveController() resolved controller:{} viewKey:{}", controllerType, viewKey);
 		}
 		return controller;
 	}

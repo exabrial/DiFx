@@ -40,17 +40,19 @@ public class DiFxViewLoader {
 		try {
 			final FXMLLoader loader = difxFxmlLoader.fxmlLoader();
 			loader.setLocation(location);
-			final Parent view = load(loader, location);
-			final C controller = controllerType.cast(loader.getController());
-			log.debug("load() loaded view for controller:{}", controllerType);
-			ScopeContext<String> scopeContext = null;
+			final String viewKey = difxFxmlLoader.viewKey();
+			final ScopeContext<String> scopeContext = (ScopeContext<String>) beanManager.getContext(FxmlScoped.class);
+			final String previousKey = scopeContext.enter(viewKey);
 			try {
-				scopeContext = (ScopeContext<String>) beanManager.getContext(FxmlScoped.class);
-			} catch (final Exception ignored) {
-				// scope not active â controller is @Dependent, not @FxmlScoped
+				final Parent view = load(loader, location);
+				final C controller = controllerType.cast(loader.getController());
+				log.debug("load() loaded view for controller:{} viewKey:{}", controllerType, viewKey);
+				controllerAndView = new FxControllerAndView<>(controller, view, difxFxmlLoader.creationalContext(), viewKey, scopeContext);
+			} finally {
+				if (previousKey != null) {
+					scopeContext.exit(previousKey);
+				}
 			}
-			controllerAndView = new FxControllerAndView<>(controller, view, difxFxmlLoader.creationalContext(), difxFxmlLoader.viewKey(),
-					scopeContext);
 		} finally {
 			fxmlLoaders.destroy(difxFxmlLoader);
 		}
