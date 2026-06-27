@@ -4,12 +4,13 @@ import jakarta.enterprise.context.spi.CreationalContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tomitribe.microscoped.core.ScopeContext;
+
+import com.github.exabrial.difx.fxmlscoped.context.FxmlScopeContext;
 
 import javafx.scene.Parent;
 
 public record FxControllerAndView<C>(C controller, Parent view, CreationalContext<?> creationalContext, String viewKey,
-		ScopeContext<String> scopeContext) implements AutoCloseable {
+		FxmlScopeContext scopeContext) implements AutoCloseable {
 	private static final Logger log = LoggerFactory.getLogger(FxControllerAndView.class);
 
 	@Override

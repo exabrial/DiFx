@@ -10,10 +10,10 @@ import jakarta.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tomitribe.microscoped.core.ScopeContext;
 
 import com.github.exabrial.difx.fxml.model.annotation.FxmlView;
-import com.github.exabrial.difx.fxmlscoped.FxmlScoped;
+import com.github.exabrial.difx.fxmlscoped.context.FxmlScopeContext;
+import com.github.exabrial.difx.fxmlscoped.extension.FxmlScopedExtension;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +27,6 @@ public class DiFxViewLoader {
 	@Inject
 	private BeanManager beanManager;
 
-	@SuppressWarnings("unchecked")
 	public <C> FxControllerAndView<C> load(final Class<C> controllerType) {
 		final String resourceName = fxmlResourceName(controllerType);
 		final URL location = controllerType.getResource(resourceName);
@@ -41,7 +40,7 @@ public class DiFxViewLoader {
 			final FXMLLoader loader = difxFxmlLoader.fxmlLoader();
 			loader.setLocation(location);
 			final String viewKey = difxFxmlLoader.viewKey();
-			final ScopeContext<String> scopeContext = (ScopeContext<String>) beanManager.getContext(FxmlScoped.class);
+			final FxmlScopeContext scopeContext = beanManager.getExtension(FxmlScopedExtension.class).getFxmlScopeContext();
 			final String previousKey = scopeContext.enter(viewKey);
 			try {
 				final Parent view = load(loader, location);
@@ -49,9 +48,7 @@ public class DiFxViewLoader {
 				log.debug("load() loaded view for controller:{} viewKey:{}", controllerType, viewKey);
 				controllerAndView = new FxControllerAndView<>(controller, view, difxFxmlLoader.creationalContext(), viewKey, scopeContext);
 			} finally {
-				if (previousKey != null) {
-					scopeContext.exit(previousKey);
-				}
+				scopeContext.exit(previousKey);
 			}
 		} finally {
 			fxmlLoaders.destroy(difxFxmlLoader);

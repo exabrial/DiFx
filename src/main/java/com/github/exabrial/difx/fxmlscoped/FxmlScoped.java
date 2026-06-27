@@ -8,15 +8,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import jakarta.enterprise.inject.Stereotype;
+import jakarta.inject.Scope;
 
-/**
- * CDI pseudo-scope for FXML controllers. No proxy, so FXMLLoader can write FXML fields directly. Unlike Dependent, CDI event observers
- * fire on the original instance. Scope is active from FXML load until the view is closed.
- */
+@Scope
+@Stereotype
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD })
-@Stereotype
 public @interface FxmlScoped {
 }
