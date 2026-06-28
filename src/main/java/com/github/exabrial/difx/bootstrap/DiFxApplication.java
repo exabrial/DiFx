@@ -40,6 +40,7 @@ public abstract class DiFxApplication extends Application {
 	public void start(final Stage primaryStage) {
 		log.info("start() firing startup stage event on FX thread for primaryStage:{}", primaryStage);
 		startupStageEventBus.fire(primaryStage);
+		startupStageEventBus.fireAsync(primaryStage);
 	}
 
 	/**
